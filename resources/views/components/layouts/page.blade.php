@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{{ $title ?? config('app.name', 'Minha Empresa') }}</title>
+
+    <x-layouts.page.favicons />
+
     <meta name="description" content="{{ $meta_description ?? 'Descrição padrão' }}" />
     <meta name="keywords" content="{{ $meta_keywords ?? '' }}" />
     <meta property="og:title" content="{{ $title ?? config('app.name') }}" />
