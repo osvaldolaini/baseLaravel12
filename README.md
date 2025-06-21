@@ -2,6 +2,15 @@
 
 ## Versão Base
 
+> Criação do comando MakeModules
+
+-   Cria o crud admin
+-   Cria a page do site
+-   Cria o model
+-   Cria a migrate
+
+-   php artisan make:modules Blog posts (Prineiro é obrigatório o segundo opcional)
+
 ## 'Plugin Tailwind'
 
 -npm i -D daisyui@latest

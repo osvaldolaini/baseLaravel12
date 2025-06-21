@@ -2,25 +2,17 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{{ trim($__env->yieldContent('title')) ?: $settings->site_title ?? 'Título Padrão' }}</title>
-    <meta name="description"
-        content="{{ trim($__env->yieldContent('meta_description')) ?: $settings->site_description ?? 'Descrição padrão' }}">
-    <meta name="keywords"
-        content="{{ trim($__env->yieldContent('meta_keywords')) ?: $settings->site_keywords ?? 'palavras-chave, padrão' }}">
-    <meta property="og:title"
-        content="{{ trim($__env->yieldContent('title')) ?: $settings->site_title ?? 'Título Padrão' }}">
-    <meta property="og:description"
-        content="{{ trim($__env->yieldContent('meta_description')) ?: $settings->site_description ?? 'Descrição padrão' }}">
-    <meta property="og:image"
-        content="{{ trim($__env->yieldContent('meta_image')) ?: asset('images/seo-default.jpg') }}">
+    <title>{{ $title ?? config('app.name', 'Minha Empresa') }}</title>
+    <meta name="description" content="{{ $meta_description ?? 'Descrição padrão' }}" />
+    <meta name="keywords" content="{{ $meta_keywords ?? '' }}" />
+    <meta property="og:title" content="{{ $title ?? config('app.name') }}" />
+    <meta property="og:description" content="{{ $meta_description ?? '' }}" />
+    <meta property="og:image" content="{{ $meta_image ?? asset('images/seo-default.jpg') }}" />
 
-
-    <x-layouts.page.favicons></x-layouts.page.favicons>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     @livewireStyles
 </head>
 
@@ -28,15 +20,16 @@
 
     {{-- Barra de contatos --}}
     <x-layouts.page.contact-bar />
-    {{-- Menu superior --}}
+
+    {{-- Menu principal (fixo/sticky) --}}
     <div class="sticky top-0 z-50">
         <x-layouts.page.header />
     </div>
-    {{-- Conteúdo principal --}}
+
     <main class="flex-grow container mx-auto px-4 py-8">
-        @yield('content')
+        {{ $slot }}
     </main>
-    {{-- Rodapé --}}
+
     <x-layouts.page.footer />
 
     @livewireScripts

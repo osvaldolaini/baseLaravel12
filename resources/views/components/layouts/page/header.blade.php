@@ -1,5 +1,5 @@
 <div id="main-header" class="bg-white/80 shadow transition duration-300">
-    <div class="container mx-auto flex items-center justify-between px-4 py-4">
+    <div class="container mx-auto flex items-center justify-between px-4 py-8">
 
         {{-- Logo --}}
         <a href="{{ url('/') }}" class="text-xl font-bold text-indigo-600">
